@@ -6,16 +6,50 @@
 
 
 {% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <script>
+        M.toast({html: '{{message}}', classes: 'center'})
+      </script>
+    {% endfor %}
+  {% endif %}
+<div class="row">
+    <form method="post" class="col s12">
+    {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="task" name="task" class="materialize-textarea"></textarea>
+          <label for="textarea1">Add New Task</label>
+        </div>
+
+        <button type="submit" name="submit" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></button>
+
+
+
+      </div>
+    </form>
+</div>
+
 
 <div class="row">
-  <div class="col s12 m12">
-    <div class="icon-block">
-      <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-      <h5 class="center">Contenido</h5>
+  <div class="col s12 m12">    
+    <ul class="collapsible">
+      {% for task in all_tasks %}
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons">filter_drama</i>
+              {{task.task}}
+              <span class="new badge {% if task.done %}teal{% else %}red{% endif %}" data-badge-caption="{% if task.done %}Done{% else %}Pending{% endif %}"></span></div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
-      <p class="light">Main content.</p>
-    </div>
-  </div>
-  </div>
+
+
+
+
 
 {% endblock content %}
