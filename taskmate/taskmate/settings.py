@@ -124,8 +124,8 @@ USE_TZ = True
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'templates')
 
-STATIC_URL = '/templates/'
+STATIC_URL = '/static/'
 
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'todolist_app/templates')
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
