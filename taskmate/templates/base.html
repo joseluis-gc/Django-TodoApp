@@ -12,13 +12,37 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 
    <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../static/js/materialize.js"></script>
-  <script src="../static/js/init.js"></script>
+  <script src="{% static  'js/materialize.js' %}"></script>
+  <script src="{% static  'js/init.js' %}"></script>
+
+  <style>
+    @media only screen and (max-width: 600px) {
+    #toast-container {
+        min-width: 100%;
+        bottom: 0%
+    }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    #toast-container {
+        left: 50%;
+        bottom: 50%;
+        max-width: 90%
+    }
+}
+@media only screen and (min-width: 993px) {
+    #toast-container {
+        top: 50%;
+        right: 50%;
+        max-width: 86%
+    }
+}
+  </style>
+
 </head>
 <body>
   <nav class=" blue-grey darken-4" role="navigation">
@@ -51,20 +75,25 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+  <!--
   <div class="section no-pad-bot green accent-3" id="index-banner">
     <div class="container">
       <div class="row center">
         <h5 class="header col s12 light">Simple Todo Application</h5>
       </div>
+
+      
       <div class="row center">
         <a href="#" id="download-button" class="btn-large waves-effect waves-light  blue-grey darken-4">Get Started</a>
       </div>
+      
       <br><br>
 
     </div>
   </div>
+  -->
 
-
+  <br><br>
   <div class="container">
     <div class="section">
 

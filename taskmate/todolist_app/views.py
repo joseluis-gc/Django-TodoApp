@@ -23,8 +23,25 @@ def todolist(request):
 def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.delete()
-
+    messages.success(request,('Task Deleted successfully.'))
     return redirect('todolist')
+
+
+
+def edit_task(request, task_id):
+    if(request.method == "POST"):
+        task = TaskList.objects.get(pk=task_id)
+        form = TaskForm(request.POST or None, instance=task)
+        if(form.is_valid()):
+            form.save()
+
+        messages.success(request,('Task Updated.'))
+        return redirect('todolist')    
+    else:
+        task_object = TaskList.objects.get(pk=task_id)
+        return render(request, 'edit.html', {'task_object':task_object})    
+
+
 
 
 
