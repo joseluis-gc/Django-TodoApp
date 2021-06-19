@@ -42,6 +42,21 @@ def edit_task(request, task_id):
         return render(request, 'edit.html', {'task_object':task_object})    
 
 
+def complete_task(request, task_id):
+    task = TaskList.objects.get(pk=task_id)
+    task.done = True
+    task.save()
+    messages.success(request,('Task Marked As Complete.'))
+    return redirect('todolist')
+
+
+def pending_task(request, task_id):
+    task = TaskList.objects.get(pk=task_id)
+    task.done = False
+    task.save()
+    messages.success(request,('Task Marked As Pending.'))
+    return redirect('todolist')
+
 
 
 

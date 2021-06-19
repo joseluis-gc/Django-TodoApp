@@ -21,15 +21,10 @@
           <textarea id="task" name="task" class="materialize-textarea"></textarea>
           <label for="textarea1">Add New Task</label>
         </div>
-
         <button type="submit" name="submit" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></button>
-
-
-
       </div>
     </form>
 </div>
-
 
 <div class="row">
   <div class="col s12 m12">    
@@ -39,12 +34,19 @@
             <div class="collapsible-header">
               <i class="material-icons">check</i>
               {{task.task}}
+
               <span class="new badge {% if task.done %}teal{% else %}red{% endif %}" data-badge-caption="{% if task.done %}Done{% else %}Pending{% endif %}"></span></div>
             <div class="collapsible-body">
               <p>
-                Options For this task.<br>
+                Options For this task.<br><br>
                   <a href="{% url 'delete_task' task.id %}" id="task delete" class="btn waves-effect waves-light  red "><i class="material-icons left">delete</i>Delete</a>
                   <a href="{% url 'edit_task' task.id %}" id="task edit" class="btn waves-effect waves-light  blue accent-2"><i class="material-icons left">edit</i>Edit</a>
+                  
+                  {% if task.done == True  %} 
+                    <a href="{% url 'pending_task' task.id %}" id="task complete" class="btn waves-effect waves-light  orange accent-3 "><i class="material-icons left">check</i>Pending</a>
+                  {% else %} 
+                    <a href="{% url 'complete_task' task.id %}" id="task complete" class="btn waves-effect waves-light  green accent-3 "><i class="material-icons left">check</i>Complete</a>
+                  {% endif %}    
               </p>
             </div>
           </li>
@@ -52,10 +54,4 @@
     </ul>
   </div>
 </div>
-
-
-
-
-
-
 {% endblock content %}
