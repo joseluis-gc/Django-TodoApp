@@ -13,7 +13,9 @@ def todolist(request):
         form = TaskForm(request.POST)
         if(form.is_valid()):
             form.save()
-        messages.success(request,('New Task Added.'))
+            messages.success(request,('New Task Added.'))
+        else:
+            messages.success(request,('Invalid Data, Please Try Again.'))
         return redirect('todolist')    
     else:
         all_tasks = TaskList.objects.all
@@ -34,8 +36,9 @@ def edit_task(request, task_id):
         form = TaskForm(request.POST or None, instance=task)
         if(form.is_valid()):
             form.save()
-
-        messages.success(request,('Task Updated.'))
+            messages.success(request,('Task Updated.'))
+        else:    
+            messages.success(request,('Invalid Data, Please Try Again.'))
         return redirect('todolist')    
     else:
         task_object = TaskList.objects.get(pk=task_id)
