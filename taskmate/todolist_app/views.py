@@ -72,3 +72,9 @@ def contact(request):
 def about(request):
     context = {'welcome_text': "About Us"}
     return render(request, 'about.html', context)
+
+
+    
+def index(request):
+    context = {'welcome_text': "Index"}
+    return render(request, 'index.html', context)
