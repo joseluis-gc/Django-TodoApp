@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Register an account - Task Mate</title>
+{% endblock title %}
+
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+      <script>
+        M.toast({html: '{{message}}', classes: 'center'})
+      </script>
+    {% endfor %}
+{% endif %}
+
+<div class="row">
+    <form method="post" class="col s12">
+    {% csrf_token %}
+      
+    {{register_form}}  
+      <!--
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="task" name="task" class="materialize-textarea"></textarea>
+          <label for="textarea1">Add New Task</label>
+        </div>
+        <button type="submit" name="submit" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></button>
+      </div>
+      -->
+        <br><br/>
+        <button type="submit" class="btn ">Register Account</button>
+    </form>
+</div>
+{% endblock content %}
