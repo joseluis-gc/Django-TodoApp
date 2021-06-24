@@ -68,7 +68,12 @@
         </div>
         <a href="#user"><img class="circle" src="{% static 'images/new.png' %}"></a>
         <a href="#name"><span class="white-text name">Task Mate</span></a>
-        <a href="#email"><span class="white-text email">Task Manager</span></a>
+        
+        {% if user.is_authenticated %}
+          <a href="#email"><span class="white-text email">{{user.username}}</span></a>
+        {% else %}
+          Not logged in
+        {% endif %}
         </div>
         </li>
 
@@ -77,6 +82,12 @@
         <li><a class="waves-effect green accent-2" href="{% url 'todolist' %}">My Todo's</a></li>
         <li><a class="waves-effect green accent-2" href="{% url 'about' %}">About</a></li>
         <li><a class="waves-effect green accent-2" href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+          <li><a class="waves-effect green accent-2" href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+          <li><a class="waves-effect green accent-2" href="{% url 'login' %}">Login</a></li>
+          <li><a class="waves-effect green accent-2" href="{% url 'register' %}">Register</a></li>
+        {% endif %}
       </ul>
       <a style="margin-top:2px;" href="#" data-target="nav-mobile" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
     </div>

@@ -14,6 +14,8 @@
     {% endfor %}
   {% endif %}
 <div class="row">
+    
+    {% if task_object.owner == request.user %}
     <form method="post" class="col s12">
     {% csrf_token %}
       <div class="row">
@@ -24,9 +26,11 @@
 
         <button type="submit" name="submit" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">edit</i></button>
 
-
-
       </div>
     </form>
+    {% else %}
+      <p>Access Denied, only task owner is allowed.</p>
+    {% endif %}
+
 </div>
 {% endblock content %}

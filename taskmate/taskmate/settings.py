@@ -133,3 +133,4 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = 'todolist'
+LOGIN_URL = 'login'
